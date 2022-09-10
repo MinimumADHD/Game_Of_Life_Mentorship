@@ -10,36 +10,27 @@ local Fold = workspace.Grid
 
 RunService.Heartbeat:Connect(function(deltaTime)
 	LoopTime += deltaTime
-
 	if LoopTime < CountTime then
 		return
 	end
-
 	LoopTime -= CountTime
-
 	print(LoopTime)
-
 	local ChangeInpt = {}
 
 	for x = 1, #GridMaker do
 		local HorizonPart = GridMaker[x]
-
 		for y = 1, #HorizonPart do
 			local AttachPart = 0
-
 			if y < #HorizonPart then
 				if HorizonPart[y + 1]:GetAttribute("Alive") then
 					AttachPart += 1
 				end
-
 				if x > 1 and GridMaker[x - 1][y + 1]:GetAttribute("Alive") then
 					AttachPart += 1
 				end
-
 				if x < #GridMaker and GridMaker[x + 1][y + 1]:GetAttribute("Alive") then
 					AttachPart += 1
 				end
-
 				if y > 1 then
 					if HorizonPart[y - 1]:GetAttribute("Alive") then
 						AttachPart += 1
@@ -53,15 +44,12 @@ RunService.Heartbeat:Connect(function(deltaTime)
 						AttachPart += 1
 					end
 				end
-
 				if x < #GridMaker and GridMaker[x + 1][y]:GetAttribute("Alive") then
 					AttachPart += 1
 				end
-
 				if x > 1 and GridMaker[x - 1][y]:GetAttribute("Alive") then
 					AttachPart += 1
 				end
-
 				if
 					AttachPart ~= 3
 					and not ((AttachPart == 2 or AttachPart == 3) and HorizonPart[y]:GetAttribute("Alive"))
@@ -83,6 +71,7 @@ RunService.Heartbeat:Connect(function(deltaTime)
 			end
 		end
 	end
+
 	for _, cell in ipairs(ChangeInpt) do
 		GridMaker[cell[1]][cell[2]].BrickColor = cell[3]
 		GridMaker[cell[1]][cell[2]]:SetAttribute("Alive", cell[4])
@@ -109,7 +98,6 @@ Event.OnServerEvent:Connect(function()
 	for _, FoldChildren in ipairs(Fold:GetChildren()) do
 		if FoldChildren:IsA("BasePart") then
 			FoldChildren.BrickColor = BrickColor.new("Black")
-
 			FoldChildren:SetAttribute("Alive", false)
 		end
 	end
