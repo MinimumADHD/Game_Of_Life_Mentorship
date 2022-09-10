@@ -17,53 +17,53 @@ RunService.Heartbeat:Connect(function(deltaTime)
 	print(LoopTime)
 	local ChangeInpt = {}
 
-	for x = 1, #GridMaker do
-		local HorizonPart = GridMaker[x]
-		for y = 1, #HorizonPart do
+	for X = 1, #GridMaker do
+		local HorizonPart = GridMaker[X]
+		for Y = 1, #HorizonPart do
 			local AttachPart = 0
-			if y < #HorizonPart then
-				if HorizonPart[y + 1]:GetAttribute("Alive") then
+			if Y < #HorizonPart then
+				if HorizonPart[Y + 1]:GetAttribute("Alive") then
 					AttachPart += 1
 				end
-				if x > 1 and GridMaker[x - 1][y + 1]:GetAttribute("Alive") then
+				if X > 1 and GridMaker[X - 1][Y + 1]:GetAttribute("Alive") then
 					AttachPart += 1
 				end
-				if x < #GridMaker and GridMaker[x + 1][y + 1]:GetAttribute("Alive") then
+				if X < #GridMaker and GridMaker[X + 1][Y + 1]:GetAttribute("Alive") then
 					AttachPart += 1
 				end
-				if y > 1 then
-					if HorizonPart[y - 1]:GetAttribute("Alive") then
+				if Y > 1 then
+					if HorizonPart[Y - 1]:GetAttribute("Alive") then
 						AttachPart += 1
 					end
 
-					if x > 1 and GridMaker[x - 1][y - 1]:GetAttribute("Alive") then
+					if X > 1 and GridMaker[X - 1][Y - 1]:GetAttribute("Alive") then
 						AttachPart += 1
 					end
 
-					if x < #GridMaker and GridMaker[x + 1][y - 1]:GetAttribute("Alive") then
+					if X < #GridMaker and GridMaker[X + 1][Y - 1]:GetAttribute("Alive") then
 						AttachPart += 1
 					end
 				end
-				if x < #GridMaker and GridMaker[x + 1][y]:GetAttribute("Alive") then
+				if X < #GridMaker and GridMaker[X + 1][Y]:GetAttribute("Alive") then
 					AttachPart += 1
 				end
-				if x > 1 and GridMaker[x - 1][y]:GetAttribute("Alive") then
+				if X > 1 and GridMaker[X - 1][Y]:GetAttribute("Alive") then
 					AttachPart += 1
 				end
 				if
 					AttachPart ~= 3
-					and not ((AttachPart == 2 or AttachPart == 3) and HorizonPart[y]:GetAttribute("Alive"))
+					and not ((AttachPart == 2 or AttachPart == 3) and HorizonPart[Y]:GetAttribute("Alive"))
 				then
 					table.insert(ChangeInpt, {
-						x,
-						y,
+						X,
+						Y,
 						BrickColor.new("Black"),
 						false,
 					})
 				else
 					table.insert(ChangeInpt, {
-						x,
-						y,
+						X,
+						Y,
 						BrickColor.new("White"),
 						true,
 					})

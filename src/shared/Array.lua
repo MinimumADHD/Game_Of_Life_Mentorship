@@ -1,21 +1,21 @@
 --SimoIlCompagno
 return function(PartOriginal, XVal, YVal)
 	if XVal == nil or YVal == nil then
-		XVal = script:GetAttribute("xval")
-		YVal = script:GetAttribute("yval")
+		XVal = script:GetAttribute("XVal")
+		YVal = script:GetAttribute("YVal")
 	end
 
 	local TableArray = {}
 
-	for x = 1, XVal do
-		TableArray[x] = {}
+	for X = 1, XVal do
+		TableArray[X] = {}
 
-		for y = 1, YVal do
+		for Y = 1, YVal do
 			local PartClone = PartOriginal:Clone()
 			PartClone.BrickColor = (math.random(1, 2) == 1) and BrickColor.new("Black") or BrickColor.new("White")
-			PartClone.CFrame = CFrame.new(x * PartClone.Size.X, 1, y * PartClone.Size.Z)
+			PartClone.CFrame = CFrame.new(X * PartClone.Size.X, 1, Y * PartClone.Size.Z)
 			PartClone.Parent = workspace.Grid
-			PartClone.Name = tostring(x) .. "/" .. tostring(y)
+			PartClone.Name = tostring(X) .. "/" .. tostring(Y)
 
 			if PartClone.BrickColor == BrickColor.new("White") then
 				PartClone:SetAttribute("Alive", true)
@@ -23,7 +23,7 @@ return function(PartOriginal, XVal, YVal)
 				PartClone:SetAttribute("Alive", false)
 			end
 
-			TableArray[x][y] = PartClone
+			TableArray[X][Y] = PartClone
 		end
 	end
 
