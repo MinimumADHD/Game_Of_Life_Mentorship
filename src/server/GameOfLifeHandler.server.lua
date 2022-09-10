@@ -72,9 +72,9 @@ RunService.Heartbeat:Connect(function(deltaTime)
 		end
 	end
 
-	for _, cell in ipairs(ChangeInpt) do
-		GridMaker[cell[1]][cell[2]].BrickColor = cell[3]
-		GridMaker[cell[1]][cell[2]]:SetAttribute("Alive", cell[4])
+	for _, CellPart in ipairs(ChangeInpt) do
+		GridMaker[CellPart[1]][CellPart[2]].BrickColor = CellPart[3]
+		GridMaker[CellPart[1]][CellPart[2]]:SetAttribute("Alive", CellPart[4])
 	end
 end)
 
