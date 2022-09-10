@@ -4,9 +4,7 @@ return function(PartOriginal, XVal, YVal)
 		XVal = script:GetAttribute("XVal")
 		YVal = script:GetAttribute("YVal")
 	end
-
 	local TableArray = {}
-
 	for X = 1, XVal do
 		TableArray[X] = {}
 
@@ -15,8 +13,7 @@ return function(PartOriginal, XVal, YVal)
 			PartClone.BrickColor = (math.random(1, 2) == 1) and BrickColor.new("Black") or BrickColor.new("White")
 			PartClone.CFrame = CFrame.new(X * PartClone.Size.X, 1, Y * PartClone.Size.Z)
 			PartClone.Parent = workspace.Grid
-			PartClone.Name = tostring(X) .. "/" .. tostring(Y)
-
+			PartClone.Name = string.format("%s/%s", tostring(X), tostring(Y))
 			if PartClone.BrickColor == BrickColor.new("White") then
 				PartClone:SetAttribute("Alive", true)
 			else
@@ -26,6 +23,5 @@ return function(PartOriginal, XVal, YVal)
 			TableArray[X][Y] = PartClone
 		end
 	end
-
 	return TableArray
 end

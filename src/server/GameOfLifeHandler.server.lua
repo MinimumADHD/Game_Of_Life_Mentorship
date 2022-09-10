@@ -8,15 +8,13 @@ local CountTime = 1.25
 local Event = game:GetService("ReplicatedStorage").ClearGrid
 local Fold = workspace.Grid
 
-RunService.Heartbeat:Connect(function(deltaTime)
-	LoopTime += deltaTime
+RunService.Heartbeat:Connect(function(DeltaTime)
+	LoopTime += DeltaTime
 	if LoopTime < CountTime then
 		return
 	end
 	LoopTime -= CountTime
-	print(LoopTime)
 	local ChangeInpt = {}
-
 	for X = 1, #GridMaker do
 		local HorizonPart = GridMaker[X]
 		for Y = 1, #HorizonPart do
@@ -35,11 +33,9 @@ RunService.Heartbeat:Connect(function(deltaTime)
 					if HorizonPart[Y - 1]:GetAttribute("Alive") then
 						AttachPart += 1
 					end
-
 					if X > 1 and GridMaker[X - 1][Y - 1]:GetAttribute("Alive") then
 						AttachPart += 1
 					end
-
 					if X < #GridMaker and GridMaker[X + 1][Y - 1]:GetAttribute("Alive") then
 						AttachPart += 1
 					end
@@ -71,7 +67,6 @@ RunService.Heartbeat:Connect(function(deltaTime)
 			end
 		end
 	end
-
 	for _, CellPart in ipairs(ChangeInpt) do
 		GridMaker[CellPart[1]][CellPart[2]].BrickColor = CellPart[3]
 		GridMaker[CellPart[1]][CellPart[2]]:SetAttribute("Alive", CellPart[4])

@@ -2,13 +2,13 @@
 local PlayerService = game:GetService("Players")
 local Morph = game:GetService("ServerStorage").Morph
 
-function RemoveCloth(Character)
+function RemoveCloth(Character, Player)
 	for _, Children in ipairs(Character:GetChildren()) do
 		if Children:IsA("Shirt") or Children:IsA("Pants") then
 			Children:Destroy()
 		end
 	end
-	Character.Humanoid:RemoveAccessories()
+	Player:ClearCharacterApperance()
 end
 
 function UpdatePlayer(Character, MorphVar)
@@ -19,7 +19,7 @@ end
 
 function PlayerEnter(Player)
 	Player.CharacterAppearanceLoaded:Connect(function(Character)
-		RemoveCloth(Character)
+		RemoveCloth(Character, Player)
 		UpdatePlayer(Character, Morph)
 	end)
 end
