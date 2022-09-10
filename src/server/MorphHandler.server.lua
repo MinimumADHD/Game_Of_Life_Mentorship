@@ -12,9 +12,8 @@ function RemoveCloth(Character)
 end
 
 function UpdatePlayer(Character, MorphVar)
-	for _, clones in ipairs(MorphVar:GetChildren()) do
-		local CloneMorph = clones:Clone()
-		CloneMorph.Parent = Character
+	for _, Clones in ipairs(MorphVar:GetChildren()) do
+		Clones:Clone().Parent = Character
 	end
 end
 
@@ -29,6 +28,6 @@ PlayerService.PlayerAdded:Connect(function(Player)
 	PlayerEnter(Player)
 end)
 
-for _, player in ipairs(PlayerService:GetChildren()) do
-	PlayerService(player)
+for _, Player in ipairs(PlayerService:GetChildren()) do
+	PlayerService(Player)
 end
