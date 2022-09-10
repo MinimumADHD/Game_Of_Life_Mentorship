@@ -1,6 +1,6 @@
 --SimoIlCompagno
 local part = game:GetService("ServerStorage").GridPart
-local ArrayModule = require(game.ServerScriptService.BidimensionalArray)
+local ArrayModule = require(game:GetService("ReplicatedStorage").Common.Array)
 local GridMaker = ArrayModule(part)
 local RunService = game:GetService("RunService")
 local LoopTime = 0
