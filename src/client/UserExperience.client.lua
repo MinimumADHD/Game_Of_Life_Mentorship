@@ -1,3 +1,4 @@
+--SimoIlCompagno
 local Event = game:GetService("ReplicatedStorage").ClearGrid
 local Player = game.Players.LocalPlayer
 local Folder = workspace.Grid
